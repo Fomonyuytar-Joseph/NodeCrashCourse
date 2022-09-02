@@ -3,6 +3,9 @@ const express = require("express");
 //express app
 const app = express();
 
+
+app.set('view engine','ejs')
+
 //listen to request
 app.get("/", (req, res) => {
   // res.send('<p>Home page</p>')
