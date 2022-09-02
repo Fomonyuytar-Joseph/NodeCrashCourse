@@ -6,7 +6,7 @@ const server = http.createServer((req ,res)=>{
     //set header content type
     res.setHeader('Content-Type','text/html');
     res.write('<p>hello Joe</p>');
-    res.write('<p>hello Queen</p>');
+    res.write('<p> </p>');
     res.end();
 })
 
