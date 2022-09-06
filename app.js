@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require('morgan')
 
 //express app
 const app = express();
@@ -7,10 +8,34 @@ const app = express();
 app.set("view engine", "ejs");
 
 //listen to request
+// app.use((req,res ,next)=>{
+//   console.log('new request made');
+//   console.log('host: ',req.hostname);
+//   console.log('path: ',req.path);
+//   console.log('method: ',req.method);
+//   next();
+// })
+
+//middle ware to serve static css file
+app.use(express.static('public'))
+app.use(morgan('dev'))
+
+
 app.get("/", (req, res) => {
   // res.send('<p>Home page</p>')
   //   res.sendFile("./views/index.html", { root: __dirname });
-  res.render("index", { title: "Home" });
+  const blogs = [
+    {
+      title: "Discover Earth today",
+      snippet: "the weather is very cold today",
+    }, 
+    { title: "Meet my new Friend", snippet: "the weather is very cold today" },
+    {
+      title: "Contius developmet of JS",
+      snippet: "the weather is very cold today",
+    },
+  ];
+  res.render("index", { title: "Home" , blogs });
 });
 
 app.get("/about", (req, res) => {

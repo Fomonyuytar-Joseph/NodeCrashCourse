@@ -1,18 +1,8 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Joseph Blog</title>
-  </head>
+  <%- include('./partials/head.ejs')  %> 
   <body>
-    <div class="site-title">
-      <a href="/">Joseph Ninja</a>
-    </div>
-    <ul>
-      <li><a href="/">Blog</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/blogs/create">New Blog</a></li>
-    </ul>
+   
+    <%- include('./partials/nav.ejs')  %> 
 
     <div class="about content">
       <h2>About Us</h2>
@@ -26,5 +16,7 @@
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, minima?
       </p>
     </div>
+    <%- include('./partials/footer.ejs')  %> 
+
   </body>
 </html>
