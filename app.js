@@ -1,8 +1,15 @@
 const express = require("express");
-const morgan = require('morgan')
+const morgan = require("morgan");
+const mongoose = require('mongoose')
+
+
 
 //express app
 const app = express();
+
+
+const dbURI="mongodb+srv://joseph:12345@nodetuts.7ozamsj.mongodb.net/?retryWrites=true&w=majority" 
+mongoose.connect(dbURI ,{ useNewUrlParser: true, useUnifiedTopology: true })
 
 //register view engine
 app.set("view engine", "ejs");
@@ -12,14 +19,13 @@ app.set("view engine", "ejs");
 //   console.log('new request made');
 //   console.log('host: ',req.hostname);
 //   console.log('path: ',req.path);
-//   console.log('method: ',req.method);
+//   console.log('method: ',req.method) ;
 //   next();
 // })
 
 //middle ware to serve static css file
-app.use(express.static('public'))
-app.use(morgan('dev'))
-
+app.use(express.static("public"));
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   // res.send('<p>Home page</p>')
@@ -28,14 +34,14 @@ app.get("/", (req, res) => {
     {
       title: "Discover Earth today",
       snippet: "the weather is very cold today",
-    }, 
+    },
     { title: "Meet my new Friend", snippet: "the weather is very cold today" },
     {
       title: "Contius developmet of JS",
       snippet: "the weather is very cold today",
     },
   ];
-  res.render("index", { title: "Home" , blogs });
+  res.render("index", { title: "Home", blogs });
 });
 
 app.get("/about", (req, res) => {
